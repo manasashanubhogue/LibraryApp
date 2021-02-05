@@ -23,3 +23,15 @@ Installation guide
 2. cd LibraryApp/
 3. docker-compose build
 4. docker-compose up
+
+Outputs
+
+
+Request Form : 
+<img src="https://github.com/manasashanubhogue/LibraryApp/blob/main/app/static/Request%20Form.png" width="300" height="200">
+
+All Requests:
+<img src="https://github.com/manasashanubhogue/LibraryApp/blob/main/app/static/all_requests.png" width="500" height="250">
+
+Particular Request:
+<img src="https://github.com/manasashanubhogue/LibraryApp/blob/main/app/static/particular_request.png" width="300" height="150">
