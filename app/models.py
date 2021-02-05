@@ -36,11 +36,11 @@ class Book(Base):
 class BookRequest(Base):
     
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(100), unique=True, nullable=False)
+    title = db.Column(db.String(100), nullable=False)
     user_email = db.Column(db.String(100), nullable=False)
+    __table_args__ = (
+    db.UniqueConstraint('title', 'user_email'),
+    )
     # time constraint - faced issue in fetching title,not much knowledge on how to back reference to get values
     # book_id = db.Column(db.Integer, db.ForeignKey('book.id'), nullable=False)
-    # __table_args__ = (
-    #     db.UniqueConstraint('book_id', 'user_email'),
-    #   )
     # notified_user = db.Column(db.Boolean, default=False, nullable=False) #on notifying user, set to true

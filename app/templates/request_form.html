@@ -3,7 +3,6 @@
 {% block content %}
     <h1>Request Book</h1>
     <form action="/request" method="post">
-        {{ form.hidden_tag() }}
         <p>
             {{ form.title.label }}<br>
             {% for field, errors in form.errors.items() %}
