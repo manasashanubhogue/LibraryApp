@@ -2,14 +2,14 @@ from app import db
 from app.models import Book, BookRequest, User
 
 # create data
-# def create_books():
-#     book1 = Book(title='Flask Web Dev 2e')
-#     book2 = Book(title='The New And Improved Flask Mega')
-#     book3 = Book(title='Complete Web Application')
-#     db.session.add(book1)
-#     db.session.add(book2)
-#     db.session.add(book3)
-#     db.session.commit()
+def create_books():
+    book1 = Book(title='Flask Web Dev 2e')
+    book2 = Book(title='The New And Improved Flask Mega')
+    book3 = Book(title='Complete Web Application')
+    db.session.add(book1)
+    db.session.add(book2)
+    db.session.add(book3)
+    db.session.commit()
 
 def book_exists(title):
     # mehtod to check if title exists in the table

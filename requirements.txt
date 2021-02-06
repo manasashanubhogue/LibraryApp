@@ -4,3 +4,4 @@ Flask-WTF==0.14.3
 WTForms==2.1
 flask_marshmallow==0.10.1
 marshmallow-sqlalchemy==0.21.0
+flask-unittest==0.1.1
