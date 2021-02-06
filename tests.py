@@ -37,12 +37,12 @@ class TestRequestBook(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
     
     def create_book_request(self):
+        input_data = {"email": 'abc@gmail.com', "title": "Test Book"}
         response = self.app.post('/request', data=input_data, content_type='multipart/form-data')
         return response
 
     def test_book_request_creation(self):
         # creating request with valid data
-        input_data = {"email": 'abc@gmail.com', "title": "Test Book"}
         response = self.create_book_request()
         self.assertEqual(response.status_code, 201)
         self.assertEqual(json.loads(response.data)['data']['title'], "Test Book")
@@ -69,4 +69,23 @@ class TestRequestBook(unittest.TestCase):
 
     def test_fetch_particular_request(self):
         book_req_response = self.create_book_request()
-        pass
+        request_id = json.loads(book_req_response.data)['data']['id']
+        response = self.app.get('/request/{}'.format(request_id))
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(json.loads(response.data)['data']['title'], "Test Book")
+
+    def test_fetchbooking_invalid_request_id(self):
+        response = self.app.get('/request/100')
+        self.assertEqual(response.status_code, 400)
+        self.assertEqual(json.loads(response.data)['error'], "Requested Booking doesn't exist !")
+
+    def test_delete_request_by_valid_id(self):
+        book_req_response = self.create_book_request()
+        request_id = json.loads(book_req_response.data)['data']['id']
+        response = self.app.delete('/request/{}'.format(request_id))
+        self.assertEqual(response.status_code, 200)
+
+    def test_delete_request_by_invalid_id(self):
+        response = self.app.delete('/request/100')
+        self.assertEqual(response.status_code, 400)
+        self.assertEqual(json.loads(response.data)['error'], "Requested Booking doesn't exist !")
