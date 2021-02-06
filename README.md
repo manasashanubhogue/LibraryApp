@@ -28,10 +28,22 @@ Outputs
 
 
 Request Form : 
+curl --location --request POST 'http://localhost:5000/request' \
+--form 'email="abx@gmail.com"' \
+--form 'title="Complete Web Application"'
+
 <img src="https://github.com/manasashanubhogue/LibraryApp/blob/main/app/static/Request%20Form.png" width="300" height="200">
 
-All Requests:
+All Requests: curl --location --request GET 'http://localhost:5000/request'
+
 <img src="https://github.com/manasashanubhogue/LibraryApp/blob/main/app/static/all_requests.png" width="500" height="250">
 
-Particular Request:
+Particular Request: curl --location --request GET 'http://localhost:5000/request/1'
 <img src="https://github.com/manasashanubhogue/LibraryApp/blob/main/app/static/particular_request.png" width="300" height="150">
+
+Delete Request: curl --location --request DELETE 'http://localhost:5000/request/4'
+
+
+TestCases:
+```docker exec -it libraryapp_web_1 bash```
+```python -m unittest```
